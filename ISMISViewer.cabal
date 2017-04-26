@@ -28,6 +28,8 @@ executable ISMISViewer
                      , clay
                      , text
                      , font-awesome-type
+                     , gtk3
+                     , webkitgtk3
                      , ISMISViewer
   other-modules:       Paths_ISMISViewer
                      , Login.CSS
