@@ -23,8 +23,11 @@ css = T.unpack . render $ do
 
     position fixed
 
+    header <? do
+      fontFamily ["Pacifico"] [cursive]
+
     star <? do
-      sym padding (px 20)
+      sym padding $ px 20
     star ? do
       position relative
       textAlign . alignSide $ sideCenter
