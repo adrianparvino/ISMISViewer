@@ -3,7 +3,7 @@ module Login.HTML where
 
 import Text.Blaze.Html5
 import Text.Blaze.Html5.Attributes hiding (label, style)
-import Paths_ISMISViewer (version)
+-- import Paths_ISMISViewer (version)
 import Data.Version (showVersion)
 import Web.FontAwesomeType
 import Data.Monoid
@@ -19,7 +19,7 @@ page = docTypeHtml $ do
     style ! type_ "text/css" $ string css
   body $ do
     div ! id "input-container" $ do
-      header . string $ unwords ["ISMISViewer", showVersion version]
+      header . string $ unwords ["ISMISViewer"]
       div ! id "username" $ do
         input ! type_ "text" ! placeholder "Username / ID Number"
       div ! id "password" $ do
