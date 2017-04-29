@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Build the client
 stack build --stack-yaml=ISMISViewerFrontend/stack.yaml
 
