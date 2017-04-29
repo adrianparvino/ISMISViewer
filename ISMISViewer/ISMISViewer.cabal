@@ -26,10 +26,12 @@ executable ISMISViewer
   build-depends:       base
                      , blaze-html
                      , clay
+                     , mime-types
                      , text
                      , font-awesome-type
                      , gtk3
                      , webkitgtk3
+                     , Spock
                      , ISMISViewer
   other-modules:       Paths_ISMISViewer
                      , Login.CSS
