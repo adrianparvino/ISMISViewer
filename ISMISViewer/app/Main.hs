@@ -6,11 +6,7 @@ import Control.Monad (void)
 
 import Graphics.UI.Gtk hiding (get)
 import Graphics.UI.Gtk.WebKit.WebView
-import Graphics.UI.Gtk.Windows.Window
 
-import Text.Blaze.Html.Renderer.String
-
-import Control.Monad
 import Control.Monad.IO.Class
 
 import qualified Data.Text as T
@@ -19,13 +15,6 @@ import Data.Text.Encoding
 import Web.Spock
 import Web.Spock.Config
 import Network.Mime
-
-import Control.Concurrent
-
-import qualified Login.HTML as Login
-
-setContent :: WebView -> String -> IO ()
-setContent webview html = webViewLoadString webview html Nothing ""
 
 main :: IO ()
 main = do
@@ -68,4 +57,3 @@ system = do
     get ("static" <//> var) $ \x -> do
       liftIO $ print x
       file =<< (decodeUtf8 . defaultMimeLookup . T.pack) $ "static/" ++ x
-    -- liftIO $ putMVar m ()

@@ -19,24 +19,21 @@
 
 module Main where
 
-import Reflex
 import Reflex.Dom
-import qualified Data.Map as Map
-import Safe (readMay)
-import Control.Applicative ((<*>), (<$>), liftA2)
-import qualified Data.Text as T
+import Data.Text.Lazy (toStrict)
+import Data.Monoid
 
-main = mainWidget $ el "div" $ do
-  nx <- numberInput
-  text " + "
-  ny <- numberInput
-  text " = "
-  let result = zipDynWith (liftA2 (+)) nx ny
-  let resultString = fmap (T.pack . show) $ result
-  dynText resultString
+import qualified Login.CSS as Login
+import qualified Login.Page as Login
 
-numberInput :: MonadWidget t m => m (Dynamic t (Maybe Double))
-numberInput = do
-  n <- textInput $ def & textInputConfig_inputType .~ "number"
-                       & textInputConfig_initialValue .~ "0"
-  return $ (readMay . T.unpack) <$> _textInput_value n
+import Clay (render)
+
+main :: IO ()
+main = mainWidgetWithHead headWidget $ Login.page
+
+headWidget :: MonadWidget t m => m ()
+headWidget = do
+  -- el "style" . text . toStrict . render $ Login.css
+  elAttr "link" ("href" =: "https://fonts.googleapis.com/css?family=Pacifico" <> "rel" =: "stylesheet") $ return ()
+  elAttr "link" ("href" =: "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.1/css/bulma.min.css" <> "rel" =: "stylesheet") $ return ()
+  elAttr "script" ("src" =: "https://use.fontawesome.com/bc68209d19.js") $ return ()

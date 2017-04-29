@@ -21,4 +21,9 @@ executable ISMISViewerFrontend
                      , reflex-dom
                      , safe
                      , containers
+                     , font-awesome-type
                      , text
+                     , clay
+                     , reflex-bulma
+  other-modules:       Login.CSS
+                     , Login.Page

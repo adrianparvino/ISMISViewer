@@ -34,8 +34,6 @@ executable ISMISViewer
                      , Spock
                      , ISMISViewer
   other-modules:       Paths_ISMISViewer
-                     , Login.CSS
-                     , Login.HTML
   default-language:    Haskell2010
 
 test-suite simple-test
