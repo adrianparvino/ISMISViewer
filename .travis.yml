@@ -17,7 +17,7 @@ addons:
     - libgmp3-dev
 
 script:
-  - stack --no-terminal --skip-ghc-check test
+  - ./build.sh
 
 install:
   - travis_wait stack --no-terminal --skip-ghc-check setup
