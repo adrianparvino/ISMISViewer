@@ -10,7 +10,6 @@ maintainer:          adrianparvino@gmail.com
 copyright:           2017 Adrian Parvin D. Ouano
 category:            Web
 build-type:          Simple
-extra-source-files:  README.md
 cabal-version:       >=1.10
 
 library
