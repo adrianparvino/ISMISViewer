@@ -20,4 +20,7 @@ script:
   - ./build.sh
 
 install:
+  - cd "ISMISViewer"
+  - travis_wait stack --no-terminal --skip-ghc-check setup
+  - cd "../ISMISViewerFrontend"
   - travis_wait stack --no-terminal --skip-ghc-check setup
