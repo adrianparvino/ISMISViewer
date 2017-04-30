@@ -1,4 +1,4 @@
-{-# LANGUAGE DataKinds, OverloadedStrings #-}
+{-# LANGUAGE RankNTypes, DataKinds, OverloadedStrings #-}
 module Reflex.Bulma.Grid
   ( columns
   ) where
@@ -11,14 +11,11 @@ import Data.Monoid
 
 import Control.Monad.Fix
 
-import Data.HVect
-
 import Data.Text (Text)
 import qualified Data.Text as T
 
--- TODO: Try to make this use heterogenous lists.
-columns :: MonadWidget t m => [Text] -> [([Text], [a] -> m a)] -> m [a]
-columns classes ms = divClass (T.unwords $ "columns":classes) $
-                     columns_ (fmap (\(classes, m) -> divClass (T.unwords $ "column":classes) . m) ms)
+columns :: MonadWidget t m => [Text] -> (forall a. ([Text] -> m b -> m (a, b)) -> m (a, b)) -> m b
+columns classes m = divClass (T.unwords $ "columns":classes) . fmap snd $ m column
   where
-     columns_ ms = mfix (\xs -> traverse ($ xs) ms)
+    column :: MonadWidget t m => [Text] -> m b -> m (a, b)
+    column classes inner = (,) undefined <$> divClass (T.unwords $ "column":classes) inner
