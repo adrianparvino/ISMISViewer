@@ -25,3 +25,4 @@ library
                      , font-awesome-type
   exposed-modules:     Reflex.Bulma
   other-modules:       Reflex.Bulma.Elements
+                     , Reflex.Bulma.Grid
