@@ -23,4 +23,4 @@ install:
   - cd "ISMISViewer"
   - travis_wait stack --no-terminal --skip-ghc-check setup
   - cd "../ISMISViewerFrontend"
-  - travis_wait stack --no-terminal --skip-ghc-check setup
+  - travis_wait stack --no-terminal --skip-ghc-check setup --no-ghcjs-boot-clean
