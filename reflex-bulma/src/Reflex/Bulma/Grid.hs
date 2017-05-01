@@ -11,11 +11,13 @@ import Data.Monoid
 
 import Control.Monad.Fix
 
+import Data.Functor.Const
+
 import Data.Text (Text)
 import qualified Data.Text as T
 
-columns :: MonadWidget t m => [Text] -> (forall a. ([Text] -> m b -> m (a, b)) -> m (a, b)) -> m b
-columns classes m = divClass (T.unwords $ "columns":classes) . fmap snd $ m column
+columns :: MonadWidget t m => [Text] -> (forall p. ([Text] -> m a -> m (Const a p)) -> m (Const a p)) -> m a
+columns classes m = divClass (T.unwords $ "columns":classes) . fmap getConst $ m column
   where
-    column :: MonadWidget t m => [Text] -> m b -> m (a, b)
-    column classes inner = (,) undefined <$> divClass (T.unwords $ "column":classes) inner
+    column :: MonadWidget t m => forall p. [Text] -> m a -> m (Const a p)
+    column classes inner = Const <$> divClass (T.unwords $ "column":classes) inner
