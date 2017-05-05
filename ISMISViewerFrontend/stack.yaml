@@ -37,3 +37,6 @@ packages:
     git: https://github.com/reflex-frp/reflex-dom-contrib
     commit: 3a0a9bb3eeea330f6c20756dec09a43410395218
   extra-dep: true
+
+nix:
+  enable: false
